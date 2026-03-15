@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Hind:wght@300;400;500;600&family=Bebas+Neue&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-rajdhani: 'Rajdhani', sans-serif;
+  --font-hind: 'Hind', sans-serif;
+  --font-bebas: 'Bebas Neue', sans-serif;
+  --saffron: #FF6B1A;
+  --india-green: #138808;
+  --navy: #000080;
+  --dark-bg: #05070F;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--dark-bg);
+  color: #F0F0F0;
+  font-family: var(--font-hind), sans-serif;
+  overflow-x: hidden;
+}
+
+/* ─── Scrollbar ─────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0E1528;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--saffron);
+  border-radius: 3px;
+}
+
+/* ─── Tricolor Border ─────────── */
+.tricolor-border {
+  border-image: linear-gradient(180deg, #FF6B1A 33.33%, #FFFFFF 33.33%, #FFFFFF 66.66%, #138808 66.66%) 1;
+}
+
+.tricolor-line {
+  background: linear-gradient(90deg, #FF6B1A 33.33%, #FFFFFF 33.33%, #FFFFFF 66.66%, #138808 66.66%);
+  height: 3px;
+  width: 100%;
+}
+
+/* ─── Glow effects ──────────── */
+.glow-saffron {
+  box-shadow: 0 0 20px rgba(255, 107, 26, 0.4);
+}
+
+.glow-green {
+  box-shadow: 0 0 20px rgba(19, 136, 8, 0.4);
+}
+
+/* ─── Vote progress bars ──────── */
+.vote-bar {
+  transition: width 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.vote-bar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.15) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+}
+
+/* ─── Poll Card hover ─────────── */
+.poll-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid rgba(255, 107, 26, 0.1);
+}
+
+.poll-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(255, 107, 26, 0.2);
+  border-color: rgba(255, 107, 26, 0.3);
+}
+
+/* ─── Ticker animation ────────── */
+.ticker-wrapper {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ticker-content {
+  display: inline-flex;
+  animation: ticker 40s linear infinite;
+}
+
+.ticker-content:hover {
+  animation-play-state: paused;
+}
+
+/* ─── Gradient text ──────────── */
+.text-gradient-saffron {
+  background: linear-gradient(135deg, #FF6B1A, #FFB347);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-tricolor {
+  background: linear-gradient(135deg, #FF6B1A 33%, #FFFFFF 50%, #138808 67%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Button styles ──────────── */
+.btn-primary {
+  @apply bg-saffron-500 hover:bg-saffron-600 text-white font-heading font-bold px-6 py-3 rounded-lg transition-all duration-200 active:scale-95;
+}
+
+.btn-outline {
+  @apply border border-saffron-500 text-saffron-500 hover:bg-saffron-500 hover:text-white font-heading font-bold px-6 py-3 rounded-lg transition-all duration-200;
+}
+
+/* ─── Shimmer loading ─────────── */
+.skeleton {
+  background: linear-gradient(90deg, #141D38 0%, #1C2847 50%, #141D38 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s linear infinite;
+  border-radius: 8px;
+}
+
+/* ─── News Ticker ─────────────── */
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ─── Counter animation ────────── */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Mobile tap highlight ─────── */
+button, a {
+  -webkit-tap-highlight-color: rgba(255, 107, 26, 0.2);
+}
+
+/* ─── Chart.js custom ──────────── */
+canvas {
+  max-width: 100%;
+}
